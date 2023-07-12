@@ -8,7 +8,7 @@ WORKDIR /app
 COPY calculator.py /app/calculator.py
 
 # Install the required dependencies
-RUN pip install tkinter
+RUN pip install python3-tkinter
 
 # Set the command to run the calculator
 CMD ["python", "/app/calculator.py"]
