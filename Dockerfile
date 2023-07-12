@@ -1,14 +1,15 @@
-# Use the official Python base image
-FROM python:3.9-slim-buster
+# Use the official Python image as the base image
+FROM python:3.9-slim
 
-# Set the working directory in the container
+# Set the working directory inside the container
 WORKDIR /app
 
-# Copy the calculator code into the container
-COPY calculator.py /app/calculator.py
+# Copy the Python script into the container
+COPY calculator.py .
 
-# Install the required dependencies
-RUN pip install python3-tkinter
+# Install the necessary dependencies
+RUN apt-get update && apt-get install -y \
+    tk
 
-# Set the command to run the calculator
-CMD ["python", "/app/calculator.py"]
+# Run the Python script when the container starts
+CMD ["python", "calculator.py"]
